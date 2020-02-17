@@ -1,28 +1,65 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="min-h-screen w-scree bg-gray-200 flex items-center justify-center">
+    <div class="w-full max-w-md text-center px-3">
+      <p>List 1</p>
+      <draggable tag="ul" class="w-full max-w-md" :list="users" :animation="200" group="all-users">
+        <UserCard v-for="user in users" :key="user.id" :user="user"></UserCard>
+      </draggable>
+    </div>
+    <div class="w-full max-w-md ml-12 text-center">
+      <p>List 2</p>
+      <draggable tag="ul" class="w-full max-w-md" :list="users2" :animation="200" group="all-users">
+        <UserCard v-for="user in users2" :key="user.id" :user="user"></UserCard>
+      </draggable>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "./assets/css/tailwind.css";
+import Draggable from "vuedraggable";
+import UserCard from "./components/UserCard.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Draggable,
+    UserCard
+  },
+  data() {
+    return {
+      users: [
+        {
+          id: 1,
+          name: "woody",
+          avatar:
+            "https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png"
+        },
+        {
+          id: 2,
+          name: "charliy",
+          avatar:
+            "https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png"
+        }
+      ],
+      users2: [
+        {
+          id: 3,
+          name: "woody2",
+          avatar:
+            "https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png"
+        },
+        {
+          id: 4,
+          name: "charliy2",
+          avatar:
+            "https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png"
+        }
+      ]
+    };
   }
-}
+};
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
+

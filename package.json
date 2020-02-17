@@ -9,7 +9,9 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "tailwindcss": "^1.2.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-feather-icons": "^5.0.0",
+    "vuedraggable": "^2.23.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
@@ -21,5 +23,11 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "postcss": {
+    "plugins": {
+      "tailwindcss": "./tailwind.config.js",
+      "autoprefixer": {}
+    }
+  }
 }
