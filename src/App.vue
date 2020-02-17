@@ -2,13 +2,13 @@
   <div id="app" class="min-h-screen w-scree bg-gray-200 flex items-center justify-center">
     <div class="w-full max-w-md text-center px-3">
       <p>List 1</p>
-      <draggable tag="ul" class="w-full max-w-md" :list="users" :animation="200" group="all-users">
+      <draggable ghost-class="moving-card" tag="ul" class="w-full max-w-md" :list="users" :animation="200" group="all-users">
         <UserCard v-for="user in users" :key="user.id" :user="user"></UserCard>
       </draggable>
     </div>
     <div class="w-full max-w-md ml-12 text-center">
       <p>List 2</p>
-      <draggable tag="ul" class="w-full max-w-md" :list="users2" :animation="200" group="all-users">
+      <draggable ghost-class="moving-card" tag="ul" class="w-full max-w-md" :list="users2" :animation="200" group="all-users">
         <UserCard v-for="user in users2" :key="user.id" :user="user"></UserCard>
       </draggable>
     </div>
@@ -60,6 +60,15 @@ export default {
   }
 };
 </script>
+
+<style>
+  .moving-card {
+
+      @apply bg-blue-100 opacity-50 border border-blue-500 bg-gray-200 ;
+
+  }
+  
+</style>
 
 
 
