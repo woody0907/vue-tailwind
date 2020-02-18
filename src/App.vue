@@ -19,6 +19,7 @@
 import "./assets/css/tailwind.css";
 import Draggable from "vuedraggable";
 import UserCard from "./components/UserCard.vue";
+import axios from 'axios';
 
 export default {
   name: "App",
@@ -57,6 +58,26 @@ export default {
         }
       ]
     };
+  },
+  mounted(){
+      this.$axios({
+      method: "get",
+      url: "http://localhost:8080/structr/rest/PD/ui?pageSize=10&page=1", // 接口地址
+      // data: {
+      //   'query': "MATCH (tom:PD {name: '史亮'})-[a:manage]->(p)-[b:participate|:manage]->(s) RETURN tom.id as id,tom.name as name"   // 传接口参数
+      // },
+      headers: {
+        'X-User':"admin",
+        'X-Password':"admin",
+      }
+    })
+      .then(response => {
+        console.log(response.data.result, "success");   // 成功的返回      
+        this.users = response.data.result;
+      })
+      .catch(error => console.log(error, "error")); // 失败的返回
+
+
   }
 };
 </script>
